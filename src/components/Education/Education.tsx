@@ -1,64 +1,30 @@
-import React, { useState } from 'react';
-// import { DataSectionsStore, ExperienceValueState } from '../../interface';
-import { ExperienceValueState } from '../../interface';
-import { v4 as uuidv4 } from 'uuid';
-import { useDispatch } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
-import { toggleActiveSections } from '../../slices/SectionSlices';
-import { addNewSection } from '../../slices/SectionsDataSlices';
+// import React from 'react'
 
-export default function Experience() {
-    const dispatch = useDispatch();
-    const value = {
-        id: '',
-        company: '',
-        periodWith: '',
-        periodFor: '',
-        post: '',
-        description: '',
-    };
-    const [experienceValue, setExperienceValue] =
-        useState<ExperienceValueState>(value);
+export default function Education() {
 
-    const { company, periodWith, periodFor, post, description } =
-        experienceValue;
-
-    const handleChange = (
-        evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        const { name, value } = evt.target;
-        setExperienceValue((prev) => ({ ...prev, [name]: value }));
-    };
-
-    const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
-        evt.preventDefault();
-
-        dispatch(addNewSection({ ...experienceValue, id: uuidv4() }));
-        setExperienceValue(value);
-    };
 
     return (
         <section className='fixed inset-0 w-full h-full items-center justify-center z-50'>
             <form
                 className='flex flex-col absolute top-20 left-[14%] w-3/4 min-h-[400px] bg-white shadow-2xl rounded-md p-4'
-                onSubmit={(evt) => handleSubmit(evt)}
+                // onSubmit={(evt) => handleSubmit(evt)}
             >
                 <h2 className="text-center text-xl font-['Days_One'] text-[#202F55]">
-                    Опыт
+                    Образование
                 </h2>
                 <label
                     htmlFor=''
                     className="font-['Days_One'] text-[#202F55] text-base"
                 >
-                    Компания
+                    Учебное заведение
                 </label>
                 <input
                     type='text'
                     placeholder='Введите название компании'
                     className='h-9 p-2 outline-none font-sans border border-[#202F5] mt-1 mb-2'
                     name='company'
-                    value={company}
-                    onChange={handleChange}
+                    // value={company}
+                    // onChange={handleChange}
                     required
                 />
                 <h2 className="font-['Days_One'] text-[#202F55] text-base">
@@ -72,8 +38,8 @@ export default function Experience() {
                         type='date'
                         className='h-9 w-1/3 p-2 outline-none font-sans border border-[#202F5] mt-1 m-2'
                         name='periodWith'
-                        value={periodWith}
-                        onChange={handleChange}
+                        // value={periodWith}
+                        // onChange={handleChange}
                         required
                     />
                     <label htmlFor='' className='relative top-2'>
@@ -83,8 +49,8 @@ export default function Experience() {
                         type='date'
                         className='h-9 w-1/3 p-2 outline-none font-sans border border-[#202F5] mt-1 mb-2 ml-2'
                         name='periodFor'
-                        value={periodFor}
-                        onChange={handleChange}
+                        // value={periodFor}
+                        // onChange={handleChange}
                         required
                     />
                 </div>
@@ -99,8 +65,8 @@ export default function Experience() {
                     placeholder='Введите название должности'
                     className='h-9 p-2 outline-none font-sans border border-[#202F5] mt-1 mb-2'
                     name='post'
-                    onChange={handleChange}
-                    value={post}
+                    // onChange={handleChange}
+                    // value={post}
                     required
                 />
                 <label
@@ -113,8 +79,8 @@ export default function Experience() {
                     name='description'
                     placeholder='Описание'
                     className='w-[300px] p-2 outline-none font-sans border border-[#202F5]'
-                    onChange={handleChange}
-                    value={description}
+                    // onChange={handleChange}
+                    // value={description}
                     required
                 ></textarea>
                 <button
@@ -126,7 +92,7 @@ export default function Experience() {
                 <button
                     type='button'
                     className="absolute top-[357px] left-[650px] w-44 h-10 text-white rounded-md bg-[#d80e0e] font-['Days_One'] font-normal cursor-pointer"
-                    onClick={() => dispatch(toggleActiveSections('Experience'))}
+                    // onClick={() => dispatch(toggleActiveSections('Experience'))}
                 >
                     Отмена
                 </button>

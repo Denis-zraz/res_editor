@@ -6,17 +6,28 @@ const initialState: DataSectionsProps = {
 };
 
 const SectionsDataSlices = createSlice({
-    name: 'dataSlices',
+    name: 'data',
     initialState,
     reducers: {
-        AddNewSection(state, { payload }) {
-            // state.data.push(payload)
-            return {
-                ...state,
-                payload,
-            };
+        addNewSection(state, { payload }) {
+            state.data.push(payload);
+        },
+        deleteSection(state, { payload }) {
+            state.data = state.data.filter((elem) => elem.id !== payload);
+        },
+        editSection(state, { payload }) {
+            state.data = state.data.map((elem) => {
+                if (elem.id === payload.id) {
+                    return payload;
+                } else {
+                    return elem;
+                }
+            });
         },
     },
 });
+
+export const { addNewSection, deleteSection, editSection } =
+    SectionsDataSlices.actions;
 
 export default SectionsDataSlices.reducer;

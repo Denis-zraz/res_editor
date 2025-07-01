@@ -4,13 +4,15 @@ import Preview from '../Preview';
 import Experience from '../Experience';
 import { toggleActiveSections } from '../../slices/SectionSlices';
 import { SectionStore } from '../../interface';
+import TasksList from '../TasksList';
+import Education from '../Education/Education';
 
 export default function Main() {
     const [selectValue, setSelectValue] = useState<string>('');
     const [errorValue, setErrorValue] = useState<boolean>(false);
     const sections = useSelector((store: SectionStore) => store.sections);
     const dispatch = useDispatch();
-    const { Experience: experience } = sections;
+    const { Experience: experience, Education: education } = sections;
 
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
@@ -56,6 +58,8 @@ export default function Main() {
                     </button>
                 </form>
                 {experience && <Experience />}
+                {education && <Education />}
+                <TasksList />
             </section>
             <Preview />
         </main>

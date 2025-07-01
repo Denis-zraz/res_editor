@@ -41,3 +41,7 @@ export type Data = ExperienceValueState | AboutMeState | SkillsValueState | Educ
 export interface DataSectionsProps {
     data: Data[];
 }
+
+export interface DataSectionsStore {
+    data: DataSectionsProps;
+}

@@ -15,7 +15,7 @@ const SectionSlices = createSlice({
         toggleActiveSections(state, { payload }) {
             switch(payload) {
                 case 'Experience':
-                    console.log(payload)
+                    // console.log(payload)
                     return { ...state, Experience: !state.Experience };
                 case 'Education':
                     return { ...state, Education: !state.Education}
