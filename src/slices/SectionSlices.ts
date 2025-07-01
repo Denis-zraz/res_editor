@@ -13,8 +13,18 @@ const SectionSlices = createSlice({
     initialState,
     reducers: {
         toggleActiveSections(state, { payload }) {
-            console.log(state);
-            console.log(payload);
+            switch(payload) {
+                case 'Experience':
+                    console.log(payload)
+                    return { ...state, Experience: !state.Experience };
+                case 'Education':
+                    return { ...state, Education: !state.Education}
+                case 'Skills':
+                    return { ...state, Skills: !state.Skills };
+                case 'AboutMe':
+                    return { ...state, AboutMe: !state.AboutMe}
+                default: state;
+            }
         },
     },
 });

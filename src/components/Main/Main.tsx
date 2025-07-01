@@ -1,15 +1,20 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Preview from '../Preview';
+import Experience from '../Experience';
 import { toggleActiveSections } from '../../slices/SectionSlices';
+import { SectionStore } from '../../interface';
 
 export default function Main() {
     const [selectValue, setSelectValue] = useState<string>('');
     const [errorValue, setErrorValue] = useState<boolean>(false);
+    const sections = useSelector((store: SectionStore) => store.sections);
     const dispatch = useDispatch();
+    const { Experience: experience } = sections;
 
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
+
         !selectValue.length
             ? setErrorValue(true)
             : dispatch(toggleActiveSections(selectValue));
@@ -50,6 +55,7 @@ export default function Main() {
                         Добавить секцию
                     </button>
                 </form>
+                {experience && <Experience />}
             </section>
             <Preview />
         </main>
