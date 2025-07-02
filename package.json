@@ -16,6 +16,7 @@
     "@types/uuid": "^10.0.0",
     "date-fns": "^4.1.0",
     "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
+    "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",

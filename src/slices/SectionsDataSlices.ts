@@ -15,7 +15,8 @@ const SectionsDataSlices = createSlice({
         deleteSection(state, { payload }) {
             state.data = state.data.filter((elem) => elem.id !== payload);
         },
-        editSection(state, { payload }) {            state.data = state.data.map((elem) => {
+        editSection(state, { payload }) {
+            state.data = state.data.map((elem) => {
                 if (elem.id === payload.id) {
                     return payload;
                 } else {
