@@ -5,15 +5,17 @@ import { useDispatch } from 'react-redux';
 import EditEducation from '../EditEducation';
 import { deleteSection } from '../../slices/SectionsDataSlices';
 import { Draggable } from 'react-beautiful-dnd';
-
-// import React from 'react'
 interface TaskEducationProps {
     elem: EducationValueState;
     preview: boolean;
     index: number;
 }
 
-export default function TaskEducation({ elem, preview, index }: TaskEducationProps) {
+export default function TaskEducation({
+    elem,
+    preview,
+    index,
+}: TaskEducationProps) {
     const { id, institution, specialization, periodWith, periodFor } = elem;
     const [editState, setEditState] = useState(false);
     const dispatch = useDispatch();

@@ -84,7 +84,7 @@ export default function EditEducation({
                     onChange={handleChange}
                 />
             </label>
-            
+
             <div className=' flex flex-row justify-between mt-3'>
                 <button
                     type='submit'

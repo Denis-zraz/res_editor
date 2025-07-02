@@ -37,7 +37,7 @@ export default function EditExperience({
         evt.preventDefault();
 
         dispatch(editSection(experienceValue));
-        setEditState()
+        setEditState();
     };
 
     return (

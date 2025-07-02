@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-// import { DataSectionsStore, ExperienceValueState } from '../../interface';
 import { ExperienceValueState } from '../../interface';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
 import { toggleActiveSections } from '../../slices/SectionSlices';
 import { addNewSection } from '../../slices/SectionsDataSlices';
 

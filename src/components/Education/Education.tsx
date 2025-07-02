@@ -29,7 +29,7 @@ export default function Education() {
         evt.preventDefault();
 
         dispatch(addNewSection({ ...education, id: uuidv4() }));
-        dispatch(toggleActiveSections('Education'))
+        dispatch(toggleActiveSections('Education'));
         setEducation(value);
     };
 

@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { AboutMeState } from '../../interface';
 import { useDispatch } from 'react-redux';
 import { editSection } from '../../slices/SectionsDataSlices';
-
-// import React from 'react'
 interface EditAboutProps {
     elem: AboutMeState;
     setEditState: () => void;

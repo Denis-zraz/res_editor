@@ -1,5 +1,3 @@
-// import React from 'react'
-
 import { useState } from 'react';
 import { AboutMeState } from '../../interface';
 import { useDispatch } from 'react-redux';

@@ -7,6 +7,8 @@ import TaskSkills from '../TaskSkills';
 import TaskAboutMe from '../TaskAboutMe';
 import { v4 as uuidv4 } from 'uuid';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
+import { useDispatch } from 'react-redux';
+import { dropSection } from '../../slices/SectionsDataSlices';
 
 interface TasksListProps {
     title: string;
@@ -18,6 +20,7 @@ export default function TasksList({ title, preview }: TasksListProps) {
     const dataSlices = useSelector(
         (state: DataSectionsStore) => state.data.data
     );
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setTasks(dataSlices);
@@ -34,37 +37,20 @@ export default function TasksList({ title, preview }: TasksListProps) {
             return;
         }
 
-        const itemsCopy = Array.from(tasks); // Копируем массив, чтобы избежать мутации состояния
-        const [reorderedItem] = itemsCopy.splice(result.source.index, 1); // Извлекаем перемещённый элемент
+        const itemsCopy = Array.from(tasks);
+        const [reorderedItem] = itemsCopy.splice(result.source.index, 1);
         if (result.destination !== null && result.destination !== undefined) {
-            itemsCopy.splice(result.destination.index, 0, reorderedItem); // Вставляем элемент в новое положение
+            itemsCopy.splice(result.destination.index, 0, reorderedItem);
         }
-        
 
-        setTasks(itemsCopy); // Обновляем состояние
-
-        // const column = boardData.columns[source.droppableId];
-        // const newTaskIds = Array.from(column.taskIds);
-        // newTaskIds.splice(source.index, 1);
-        // newTaskIds.splice(destination.index, 0, draggableId);
-
-        // const newColumn = {
-        //     ...column,
-        //     taskIds: newTaskIds,
-        // };
-
-        // const newBoardData = {
-        //     ...boardData,
-        //     columns: {
-        //         ...boardData.columns,
-        //         [newColumn.id]: newColumn,
-        //     },
-        // };
+        setTasks(itemsCopy);
+        dispatch(dropSection(itemsCopy))
     };
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId={uuidv4()}>
                 {(provided) => (
+                    
                     <div
                         className='w-full h-auto mt-3 mb-3'
                         ref={provided.innerRef}
@@ -122,7 +108,7 @@ export default function TasksList({ title, preview }: TasksListProps) {
                                 }
                             })
                         )}
-                        {provided.placeholder}
+                        {/* {provided.placeholder} */}
                     </div>
                 )}
             </Droppable>

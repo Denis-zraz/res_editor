@@ -24,10 +24,13 @@ const SectionsDataSlices = createSlice({
                 }
             });
         },
+        dropSection(state, { payload }) {
+            state.data = payload;
+        },
     },
 });
 
-export const { addNewSection, deleteSection, editSection } =
+export const { addNewSection, deleteSection, editSection, dropSection } =
     SectionsDataSlices.actions;
 
 export default SectionsDataSlices.reducer;
