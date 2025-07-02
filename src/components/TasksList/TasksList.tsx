@@ -4,7 +4,12 @@ import { useEffect, useState } from 'react';
 import TaskExperience from '../TaskExperience/TaskExperience';
 import TaskEducation from '../TaskEducation';
 
-export default function TasksList() {
+interface TasksListProps {
+    title: string,
+    preview: boolean,
+}
+
+export default function TasksList({ title, preview }: TasksListProps) {
     const [tasks, setTasks] = useState<Data[]>([]);
     const dataSlices = useSelector(
         (state: DataSectionsStore) => state.data.data
@@ -15,16 +20,16 @@ export default function TasksList() {
     }, [dataSlices]);
     return (
         <div className='w-full h-auto mt-3 mb-3'>
-            <h2 className="text-[#202F55] font-['Days_One']">Части резюме</h2>
+            <h2 className="text-[#202F55] font-['Days_One']">{title}</h2>
             {!tasks.length ? (
                 <p className='font-serif text-xs'>Пока ничего нет</p>
             ) : (
                 tasks.map((elem: Data) => {
                     if ('company' in elem) {
-                        return <TaskExperience elem={elem} key={elem.id} />;
+                        return <TaskExperience elem={elem} key={elem.id} preview={preview}/>;
                     }
                     if ('institution' in elem) {
-                        return <TaskEducation key={elem.id} />;
+                        return <TaskEducation elem={elem} key={elem.id} preview={preview}/>;
                     }
                 })
             )}

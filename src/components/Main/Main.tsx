@@ -59,7 +59,7 @@ export default function Main() {
                 </form>
                 {experience && <Experience />}
                 {education && <Education />}
-                <TasksList />
+                <TasksList title={'Части резюме'} preview={false}/>
             </section>
             <Preview />
         </main>

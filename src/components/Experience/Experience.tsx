@@ -34,6 +34,7 @@ export default function Experience() {
         evt.preventDefault();
 
         dispatch(addNewSection({ ...experienceValue, id: uuidv4() }));
+        dispatch(toggleActiveSections('Experience'));
         setExperienceValue(value);
     };
 
@@ -112,7 +113,7 @@ export default function Experience() {
                 <textarea
                     name='description'
                     placeholder='Описание'
-                    className='w-[300px] p-2 outline-none font-sans border border-[#202F5]'
+                    className='w-full p-2 outline-none font-sans border border-[#202F5]'
                     onChange={handleChange}
                     value={description}
                     required
