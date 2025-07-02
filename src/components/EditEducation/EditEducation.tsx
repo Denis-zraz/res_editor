@@ -89,7 +89,6 @@ export default function EditEducation({
                 <button
                     type='submit'
                     className="w-32 h-8 text-white text-[12px] rounded-md bg-green-800 font-['Days_One'] cursor-pointer mt-2"
-                    // onClick={handleClick}
                 >
                     Изменить
                 </button>

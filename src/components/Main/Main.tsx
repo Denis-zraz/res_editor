@@ -7,6 +7,7 @@ import { SectionStore } from '../../interface';
 import TasksList from '../TasksList';
 import Education from '../Education/Education';
 import Skills from '../Skills';
+import AboutMe from '../AboutMe';
 
 export default function Main() {
     const [selectValue, setSelectValue] = useState<string>('');
@@ -17,6 +18,7 @@ export default function Main() {
         Experience: experience,
         Education: education,
         Skills: skills,
+        AboutMe: about,
     } = sections;
 
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
@@ -65,6 +67,7 @@ export default function Main() {
                 {experience && <Experience />}
                 {education && <Education />}
                 {skills && <Skills />}
+                {about && <AboutMe />}
                 <TasksList title={'Части резюме'} preview={false} />
             </section>
             <Preview />

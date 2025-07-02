@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import TaskExperience from '../TaskExperience/TaskExperience';
 import TaskEducation from '../TaskEducation';
 import TaskSkills from '../TaskSkills';
+import TaskAboutMe from '../TaskAboutMe';
 
 interface TasksListProps {
     title: string;
@@ -47,6 +48,15 @@ export default function TasksList({ title, preview }: TasksListProps) {
                     if ('skills' in elem) {
                         return (
                             <TaskSkills
+                                elem={elem}
+                                key={elem.id}
+                                preview={preview}
+                            />
+                        );
+                    }
+                    if ('about' in elem) {
+                        return (
+                            <TaskAboutMe
                                 elem={elem}
                                 key={elem.id}
                                 preview={preview}

@@ -48,7 +48,7 @@ export default function Skills() {
                 </label>
                 <textarea
                     placeholder='Профессиональные качества'
-                    className='h-9 p-2 outline-none font-sans border border-[#202F5] mt-1 mb-2 overflow-hidden resize-none'
+                    className='h-24 p-2 outline-none font-sans border border-[#202F5] mt-1 mb-2 overflow-hidden resize-none'
                     name='skills'
                     value={skills}
                     onChange={handleChange}
@@ -62,7 +62,7 @@ export default function Skills() {
                 </label>
                 <textarea
                     placeholder='Личные качесва'
-                    className='h-9 p-2 outline-none font-sans border border-[#202F5] mt-1 mb-2 overflow-hidden resize-none'
+                    className='h-24 p-2 outline-none font-sans border border-[#202F5] mt-1 mb-2 overflow-hidden resize-none'
                     name='personalSkills'
                     onChange={handleChange}
                     value={personalSkills}
@@ -76,7 +76,7 @@ export default function Skills() {
                 </button>
                 <button
                     type='button'
-                    className="absolute top-[195px] left-[650px] w-44 h-10 text-white rounded-md bg-[#d80e0e] font-['Days_One'] font-normal cursor-pointer"
+                    className="absolute top-[317px] left-[650px] w-44 h-10 text-white rounded-md bg-[#d80e0e] font-['Days_One'] font-normal cursor-pointer"
                     onClick={() => dispatch(toggleActiveSections('Skills'))}
                 >
                     Отмена

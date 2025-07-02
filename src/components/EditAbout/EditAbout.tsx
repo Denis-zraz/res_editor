@@ -1,33 +1,32 @@
 import { useState } from 'react';
-import { SkillsValueState } from '../../interface';
+import { AboutMeState } from '../../interface';
 import { useDispatch } from 'react-redux';
 import { editSection } from '../../slices/SectionsDataSlices';
 
 // import React from 'react'
-interface EditSkillsProps {
-    elem: SkillsValueState;
+interface EditAboutProps {
+    elem: AboutMeState;
     setEditState: () => void;
 }
 
-export default function EditSkills({ elem, setEditState }: EditSkillsProps) {
-    const [skillsValue, setSkillsValue] = useState<SkillsValueState>({
+export default function EditAbout({ elem, setEditState }: EditAboutProps) {
+    const [aboutValue, setAboutValue] = useState<AboutMeState>({
         id: elem.id,
-        skills: elem.skills,
-        personalSkills: elem.personalSkills,
+        about: elem.about,
     });
-    const { skills, personalSkills } = skillsValue;
+    const { about } = aboutValue;
+
     const dispatch = useDispatch();
     const handleChange = (
         evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
-        const { name, value } = evt.target;
-        setSkillsValue((prev) => ({ ...prev, [name]: value }));
+        setAboutValue((prev) => ({ ...prev, about: evt.target.value }));
     };
 
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
 
-        dispatch(editSection(skillsValue));
+        dispatch(editSection(aboutValue));
         setEditState();
     };
     return (
@@ -36,23 +35,14 @@ export default function EditSkills({ elem, setEditState }: EditSkillsProps) {
             className='w-full h-auto flex flex-col shadow-md border border-[#202F55] bg-white rounded-md p-3 mb-3'
         >
             <h3 className="text-[#202F55] font-['Days_One'] border-b border-[#202F55] mb-1">
-                Навыки
+                О себе
             </h3>
             <label className="text-[#202F55] font-['Days_One'] text-xs flex flex-row">
-                Профессиональные качества -
+                Дополнительные сведения -
                 <textarea
-                    name='skills'
+                    name='about'
                     className='font-sans ml-2 outline-none border border-[#202F5]'
-                    value={skills}
-                    onChange={handleChange}
-                />
-            </label>
-            <label className="text-[#202F55] font-['Days_One'] text-xs flex flex-row">
-                Личные качесва -
-                <textarea
-                    className='font-sans ml-2 outline-none border border-[#202F5]'
-                    value={personalSkills}
-                    name='personalSkills'
+                    value={about}
                     onChange={handleChange}
                 />
             </label>
