@@ -6,13 +6,18 @@ import { toggleActiveSections } from '../../slices/SectionSlices';
 import { SectionStore } from '../../interface';
 import TasksList from '../TasksList';
 import Education from '../Education/Education';
+import Skills from '../Skills';
 
 export default function Main() {
     const [selectValue, setSelectValue] = useState<string>('');
     const [errorValue, setErrorValue] = useState<boolean>(false);
     const sections = useSelector((store: SectionStore) => store.sections);
     const dispatch = useDispatch();
-    const { Experience: experience, Education: education } = sections;
+    const {
+        Experience: experience,
+        Education: education,
+        Skills: skills,
+    } = sections;
 
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
@@ -23,8 +28,8 @@ export default function Main() {
     };
 
     return (
-        <main className='w-full h-full flex flex-row'>
-            <section className='flex flex-col w-1/2 p-6 border-r-1 border-[#202F55]'>
+        <main className='w-full h-auto flex flex-row'>
+            <section className='flex flex-col w-1/2 min-h-screen bg-white p-6 border-r-1 border-[#202F55]'>
                 <form
                     className='flex flex-col relative'
                     onSubmit={(evt) => handleSubmit(evt)}
@@ -59,7 +64,8 @@ export default function Main() {
                 </form>
                 {experience && <Experience />}
                 {education && <Education />}
-                <TasksList title={'Части резюме'} preview={false}/>
+                {skills && <Skills />}
+                <TasksList title={'Части резюме'} preview={false} />
             </section>
             <Preview />
         </main>

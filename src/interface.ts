@@ -28,7 +28,8 @@ export interface EducationValueState {
 
 export interface SkillsValueState {
     id: string;
-    skills: string[];
+    skills: string;
+    personalSkills: string;
 }
 
 export interface AboutMeState {

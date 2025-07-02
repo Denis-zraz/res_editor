@@ -3,10 +3,11 @@ import { DataSectionsStore, Data } from '../../interface';
 import { useEffect, useState } from 'react';
 import TaskExperience from '../TaskExperience/TaskExperience';
 import TaskEducation from '../TaskEducation';
+import TaskSkills from '../TaskSkills';
 
 interface TasksListProps {
-    title: string,
-    preview: boolean,
+    title: string;
+    preview: boolean;
 }
 
 export default function TasksList({ title, preview }: TasksListProps) {
@@ -26,10 +27,31 @@ export default function TasksList({ title, preview }: TasksListProps) {
             ) : (
                 tasks.map((elem: Data) => {
                     if ('company' in elem) {
-                        return <TaskExperience elem={elem} key={elem.id} preview={preview}/>;
+                        return (
+                            <TaskExperience
+                                elem={elem}
+                                key={elem.id}
+                                preview={preview}
+                            />
+                        );
                     }
                     if ('institution' in elem) {
-                        return <TaskEducation elem={elem} key={elem.id} preview={preview}/>;
+                        return (
+                            <TaskEducation
+                                elem={elem}
+                                key={elem.id}
+                                preview={preview}
+                            />
+                        );
+                    }
+                    if ('skills' in elem) {
+                        return (
+                            <TaskSkills
+                                elem={elem}
+                                key={elem.id}
+                                preview={preview}
+                            />
+                        );
                     }
                 })
             )}
